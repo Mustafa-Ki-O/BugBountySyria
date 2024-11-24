@@ -24,7 +24,7 @@ const DeleteProductModal = ({productId,opened,setShow,fetchData,setData,setProgr
         w="100%"
         radius={20}
         opened={opened}
-        onClose={close}
+        onClose={() => setShow(false)}
         centered
         overlayProps={{
           backgroundOpacity: 0.55,
@@ -43,7 +43,7 @@ const DeleteProductModal = ({productId,opened,setShow,fetchData,setData,setProgr
            <Button size="md" radius={10} fullWidth variant="filled" color="#b21222" onClick={handleDelete}>
             {t('حذف')}
            </Button>
-           <Button size="md" radius={10} fullWidth variant="outline" color="#b21222" onClick={close}>
+           <Button size="md" radius={10} fullWidth variant="outline" color="#b21222" onClick={() => setShow(false)}>
             {t('تراجع')}
            </Button>
           </Flex>

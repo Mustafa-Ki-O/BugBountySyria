@@ -94,7 +94,7 @@ const ChangePasswordForm = () => {
           </GridCol>
           </Grid>
           <Flex mt={20} justify='space-between' gap={10}>
-              <Button radius={10} fullWidth variant ='outline' color="#B21222"  onClick={() => navigate('/checkcode')}>{t("رجوع")}</Button>
+              <Button radius={10} fullWidth variant ='outline' color="#B21222"  onClick={() => navigate('/BugBountySyria/checkcode')}>{t("رجوع")}</Button>
               <Button radius={10} fullWidth  variant="filled" color="#B21222" type="submit">{t('تأكيد')}</Button>
           </Flex>
           </form>

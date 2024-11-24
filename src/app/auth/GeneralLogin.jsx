@@ -37,33 +37,35 @@ const GeneralLogin = () => {
             </Text>
           </Stack>
           <Flex
-            className="buttons"
+            // className="buttons"
             w="100%"
-            gap="1.25rem"
+            gap="0rem"
             justify="center"
             m="auto"
             mb={10}
           >
             <Button
               fullWidth
-              radius="15px 10px 10px 10px"
+              radius="15px 0px 0px 10px"
               size="md"
-              style={{
-                boxShadow: active === "0" ? "0 2px 4px 0 #b21222" : undefined,
-              }}
+              // style={{
+              //   boxShadow: active === "0" ? "0 2px 4px 0 #b21222" : undefined,
+              // }}
               variant={active === "0" ? "filled" : "outline"}
               color="#B21222"
               onClick={() => handleClick("0")}
+              p={0}
             >
               {t("الدخول كشركة")}
             </Button>
             <Button
               fullWidth
-              radius="10px 15px 10px 10px"
+              p={0}
+              radius="0px 15px 10px 0px"
               size="md"
-              style={{
-                boxShadow: active === "1" ? "0 2px 4px 0 #b21222" : undefined,
-              }}
+              // style={{
+              //   boxShadow: active === "1" ? "0 2px 4px 0 #b21222" : undefined,
+              // }}
               variant={active === "1" ? "filled" : "outline"}
               color="#B21222"
               onClick={() => handleClick("1")}

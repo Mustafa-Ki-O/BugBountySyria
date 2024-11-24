@@ -83,18 +83,36 @@ const LoginCompany = ({setProgress}) => {
                     {t("تسجيل الدخول")}
                   </Button>
                 </Flex>
-                <Grid hiddenFrom="md" gutter={0}>
-                  <GridCol span={12}>
-                  <Button fullWidth radius={10} variant="filled" color='#b21222' type="submit" mt="sm">
-                    {t("تسجيل الدخول")}
-                  </Button>
-                  </GridCol>
-                  <GridCol span={12}>
-                  <Button fullWidth radius={10} variant="outline" color='#b21222' mt="sm" onClick={() => navigate(`/`)}>
-                    {t("انشاء حساب")}
-                  </Button>
-                  </GridCol>
-                </Grid>
+                <Grid hiddenFrom="md" gutter={15}>
+          <GridCol span={6}>
+              <Button             
+                fullWidth
+                size="sm"
+                radius={10}
+                variant="outline"
+                color="#b21222"
+                mt="sm"
+                p={0}
+                onClick={() => navigate(`/BugBountySyria/`)}
+              >
+                {t("انشاء حساب")}
+              </Button>
+            </GridCol>
+            <GridCol span={6}>
+              <Button
+                fullWidth
+                size="sm"
+                radius={10}
+                variant="filled"
+                color="#b21222"
+                type="submit"
+                mt="sm"
+                p={0}
+              >
+                {t("تسجيل الدخول")}
+              </Button>
+            </GridCol>
+          </Grid>
               </form>
             </Container>
     </>

@@ -31,21 +31,25 @@ const Footer = () => {
               </Group>
             </Flex>
           </Flex>
-          {/* responsive footer */}
-          <Container hiddenFrom="sm" p={0} justify='space-between' align="center">
+          </AppShell.Footer>
+          </AppShell>
+          {/* responsive footer */} 
+        <AppShell hiddenFrom="sm" >
+         <AppShell.Footer style={{ color:'#fff',position: 'absolute' ,bottom:0,alignItems:'center',padding:'20px 40px',marginTop:20 ,backgroundColor:'#b21222'}}>
+          <Container  p={0} justify='space-between' align="center" > 
             <Stack>
             <Flex gap={10} align='center' justify='start'>
             <Image src={privacyIcon} p={2}/>
-             <Text size="md" c='#1D1D1B90' fw={500}>
+             <Text size="md" fw={500}>
                  Bug Bounty Syria
              </Text>
             </Flex>
-            <Flex justify='center' gap={10}>
+            <Flex justify='start' gap={10}>
                 {data.map((el,i) => (
-                  <Anchor key={i} size='md' c='#1D1D1B90' fw={500}>{el}</Anchor>
+                  <Anchor key={i} size='md' c='#fff' fw={500}>{el}</Anchor>
                 ))}
               </Flex>    
-              <Flex justify='end' gap={10}>
+              <Flex justify='start' gap={10}>
                 {icons.map((el,i) =>(
                     <Image src={el} key={i} w={20} style={{cursor:'pointer'}} />
                 ))}

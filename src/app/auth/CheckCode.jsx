@@ -76,7 +76,7 @@ const CheckCode = () => {
             <div className={styles.headerBox}>
               <h2>{t("ادخال رمز التحقق")}</h2>
               <h5>
-                {t("يرجى تفقد البريد و من ثم ادخال الرمز المؤلف من 4 خانات")}
+                {t("يرجى تفقد البريد و من ثم ادخال الرمز المؤلف من 8 خانات")}
               </h5>
             </div>
             <div className={styles.contInputs}>
@@ -92,7 +92,7 @@ const CheckCode = () => {
                   className={styles.codeInput}
                 />
                 <div className={styles.contButtons}>
-                  <Button onClick={() => navigate('/login')}>
+                  <Button onClick={() => navigate('/BugBountySyria/login')}>
                     {t("رجوع")}
                   </Button>
                   <Button type="submit">{t("التحقق من الرمز")}</Button>

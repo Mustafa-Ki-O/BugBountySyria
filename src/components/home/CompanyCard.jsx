@@ -57,7 +57,7 @@ const CompanyCard = ({companyName,domain,description,type,numEmployees,image,id}
       </Group>
       </Flex>
       <Button color="#B21222" variant='outline' fullWidth radius="md" align='flex-end' fw={800} 
-      onClick={() => navigate(`/BugBountySyriaompany/${id}`)}>
+      onClick={() => navigate(`/BugBountySyria/company/${id}`)}>
         {t('قراءة المزيد')}
       </Button>
       </Stack>
