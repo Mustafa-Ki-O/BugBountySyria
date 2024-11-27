@@ -1,5 +1,5 @@
 .contBox {
-  width: 441px;
+  width: 400px;
   background-color: #ffffff;
   color: black;
   border-radius: 10px;
@@ -29,12 +29,13 @@
 
 .contButtons {
   display: flex;
+  gap: 20px;
   justify-content: space-between;
 }
 
 .contButtons button {
   width: 130px;
-  margin: 6px;
+  margin-top: 6px;
   background-color: #b21222;
   border-radius: 8px;
   transition: 0.3s;

@@ -47,7 +47,43 @@ const Body = ({setProgress}) => {
                {t("التسجيل كباحث أمني")}
              </Button>
          </Flex>
-         <Grid my={15} hiddenFrom="md">
+         <Flex
+            hiddenFrom="md"
+            w="100%"
+            gap="0rem"
+            justify="center"
+            m="auto"
+            mb={10}
+            // direction={lang === 'en' ? 'row-reverse' : 'row'}
+          >
+            <Button
+              fullWidth
+              radius="15px 0px 0px 10px"
+              size="md"
+              variant={active === "0" ? "filled" : "outline"}
+              color="#B21222"
+              onClick={() => handleClick("0")}
+              p={0}
+              fz={13}
+              fw={800}
+            >
+              {t("التسجيل كشركة جديدة")}
+            </Button>
+            <Button
+              fullWidth
+              p={0}
+              fz={13}
+              fw={800}
+              radius="0px 15px 10px 0px"
+              size="md"
+              variant={active === "1" ? "filled" : "outline"}
+              color="#B21222"
+              onClick={() => handleClick("1")}
+            >
+              {t("التسجيل كباحث أمني")}
+            </Button>
+          </Flex>
+         {/* <Grid my={15} hiddenFrom="md">
           <GridCol span={12} dir="rtl">
            <Select
              dir="rtl"
@@ -60,7 +96,7 @@ const Body = ({setProgress}) => {
              ]}
            />
            </GridCol>
-         </Grid>
+         </Grid> */}
         {active === '0' ? <CompanyForm setProgress={setProgress}/> : <ResearcherForm setProgress={setProgress}/>}
         </Stack>
     </Container>

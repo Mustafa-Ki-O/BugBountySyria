@@ -136,12 +136,12 @@ const ResearcherForm = ({setProgress}) => {
     </Flex>
     <Grid hiddenFrom="md" gutter={10}>
     <GridCol span={12}>
-    <LoginButton />
-    </GridCol>
-    <GridCol span={12}>
     <Button fullWidth radius={10}  size="md" type="submit" variant="filled" color="#B21222">
           {t("انشاء حساب")}
         </Button>
+    </GridCol>
+    <GridCol span={12}>
+      <LoginButton />
     </GridCol>
  </Grid>
 </form>

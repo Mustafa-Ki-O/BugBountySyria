@@ -43,7 +43,7 @@ const ReSetPassword = () => {
     const validated = form.validate();
 
     if (validated) {
-      validated.errors; //Object with errors
+      validated.errors;
     }
   };
   useEffect(()=>{
@@ -59,14 +59,14 @@ const ReSetPassword = () => {
         fluid
         m={0}
         p={0}
-        h="100vh"
+        // h="100vh"
         style={{ display: "flex", flexDirection: "column" }}
       >
         <Stack
           style={{
             justifyContent: "center",
             alignItems: "center",
-            height: "100vh",
+            // height: "100vh",
           }}
         >
           <div className={styles.contBox}>

@@ -10,9 +10,9 @@ export function LanguagePicker() {
   const { t, i18n } = useTranslation();
 
   const [lang, setLang] = useState(localStorage.getItem('lang'));
-  useEffect(() => {
-    document.getElementById('root').setAttribute('dir', lang === 'en' ? 'rtl' : 'ltr');
-  }, [lang]);
+  // useEffect(() => {
+  //   document.getElementById('root').setAttribute('dir', lang === 'en' ? 'rtl' : 'ltr');
+  // }, [lang]);
 
   const handleLanguageChange = (item) => {
     localStorage.setItem("lang", item.value);
