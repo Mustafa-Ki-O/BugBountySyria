@@ -89,7 +89,7 @@ const ReSetPassword = () => {
                   className={styles.codeInput}
                 />
                 <div className={styles.contButtons}>
-                  <Button onClick={() => navigate('/login')}>
+                  <Button onClick={() => navigate('/BugBountySyria/login')}>
                     {t("رجوع")}
                   </Button>
                   <Button type="submit">{t("التحقق من الرمز")}</Button>
