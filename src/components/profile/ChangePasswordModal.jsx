@@ -15,7 +15,7 @@ import { useState, useEffect } from "react";
 import useChangepassword from "../useMutation/researcher/useChangePassword";
 
 const ChangePasswordModal = ({ opened, close, setProgress }) => {
-  const { change, isLoading } = useChangepassword();
+  const { change, isPending } = useChangepassword();
   const { t } = useTranslation();
   const [isSubmitted, setIsSubmitted] = useState(false);
 
@@ -37,16 +37,17 @@ const ChangePasswordModal = ({ opened, close, setProgress }) => {
     },
   });
 
-  const handleSubmit = () => {
+  const handleSubmit = async() => {
     if (form.isValid) {
-      const values = form.getValues();
+      const values =  form.getValues();
       const newFormData = new FormData();
       Object.keys(values).forEach((key) => {
         newFormData.append(key, values[key]);
       });
 
       setIsSubmitted(true);
-      change(newFormData);
+     await change(newFormData);
+     close()
     }
     const validated = form.validate();
     if (validated) {
@@ -57,9 +58,9 @@ const ChangePasswordModal = ({ opened, close, setProgress }) => {
 
   useEffect(() => {
     if (isSubmitted) {
-      setProgress(isLoading);
+      setProgress(isPending);
     }
-  }, [isLoading, isSubmitted, setProgress]);
+  }, [isPending, isSubmitted, setProgress]);
 
   return (
     <>

@@ -12,7 +12,7 @@ const Company = () => {
   const [companyPrograms, setCompanyPrograms] = useState([]);
   const [selectedCompany, setSelectedCompany] = useState({});
 
-  const { fetchCompany, isLoading } = useFetchCompany(
+  const { fetchCompany, isPending } = useFetchCompany(
     setSelectedCompany,
     setCompanyPrograms
   );
@@ -22,8 +22,8 @@ const Company = () => {
   }, []);
 
   useEffect(() => {
-    setProgress(isLoading);
-  }, [isLoading]);
+    setProgress(isPending);
+  }, [isPending]);
 
 
 

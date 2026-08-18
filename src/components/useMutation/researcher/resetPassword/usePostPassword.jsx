@@ -1,11 +1,11 @@
-import { useMutation } from "react-query";
+import { useMutation } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 import { PostNewPassword } from "../../../../api/researcher/forget-password/postNewPassword";
 import { useNavigate } from "react-router-dom";
 
 const usePostPassword= () => {
     const navigate = useNavigate();
-    const {mutate : postPassword , isLoading} = useMutation({
+    const {mutate : postPassword , isPending} = useMutation({
         mutationFn:(formData) => PostNewPassword(formData),
         onSuccess:() => {
             console.log('تم تحديث كلمة المرور بنجاح')  
@@ -17,6 +17,6 @@ const usePostPassword= () => {
             toast.error(err.message)
         }
     })
-  return {postPassword  ,isLoading}
+  return {postPassword  ,isPending}
 }
 export default usePostPassword

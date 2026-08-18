@@ -29,7 +29,7 @@ const Navbar = () => {
   const comImg = company && company.data.company.logo;
 
   const researcher = JSON.parse(localStorage.getItem("researcher"));
-  const resImg = researcher && researcher.data.researcher.image;
+  const resImg = researcher?.data?.researcher?.image;
 
   let image = null;
   if (comImg) {

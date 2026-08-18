@@ -5,7 +5,26 @@ import '@mantine/core/styles.css';
 import { MantineProvider } from '@mantine/core';
 import '@mantine/charts/styles.css';
 import  './i18n.js'
-import { QueryClientProvider,QueryClient } from 'react-query';
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
+
+const NODE = import.meta.env.VITE_NODE 
+
+
+async function enableMocking() {
+  if (NODE === 'development') {
+    return
+  }
+  const { worker } = await import('./mocks/browser')
+  return worker.start({
+    onUnhandledRequest: 'bypass', 
+      serviceWorker: {
+    url: '/BugBountySyria/mockServiceWorker.js'
+  }
+  })
+}
+
+enableMocking()
 
 const queryClient = new QueryClient();
 createRoot(document.getElementById('root')).render(
@@ -13,5 +32,5 @@ createRoot(document.getElementById('root')).render(
   <MantineProvider>
     <App />
   </MantineProvider>
-  </QueryClientProvider>,
+  </QueryClientProvider>, 
 )

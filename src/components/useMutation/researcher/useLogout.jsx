@@ -1,14 +1,14 @@
-import { useMutation } from "react-query";
+import { useMutation } from "@tanstack/react-query";
 import { LogOut } from "../../../api/researcher/logOut";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 
 const useLogout = () => {
   const navigate = useNavigate();
-  const { mutate: logout, isLoading } = useMutation({
-    mutationFn: () => LogOut(),
+  const { mutate: logout, isPending } = useMutation({
+    mutationFn: () => navigate("/BugBountySyria/login"),
     onSuccess: () => {
-      navigate("/BugBountySyria/login");
+      // navigate("/BugBountySyria/login");
       toast.success("تم تسجيل الخروج بنجاح");
       console.log("تم تسجيل الخروج بنجاح");
     },
@@ -16,6 +16,6 @@ const useLogout = () => {
       console.log("ERROR", err);
     },
   });
-  return { logout, isLoading };
+  return { logout, isPending };
 };
 export default useLogout;

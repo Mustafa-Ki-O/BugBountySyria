@@ -15,7 +15,7 @@ import LoginButton from "../../../app/auth/LoginButton";
 
 const CompanyForm = ({setProgress}) => {
   const { t } = useTranslation();
-  const {register,isLoading} = useReg();
+  const {register,isPending} = useReg();
   const[isSubmitted,setIsSubmitted] = useState(false)
 
   const schema = yup.object().shape({
@@ -67,9 +67,9 @@ const CompanyForm = ({setProgress}) => {
   };
   useEffect(()=>{
     if(isSubmitted){
-    setProgress(isLoading)
+    setProgress(isPending)
     }
-  },[isLoading])
+  },[isPending])
 
   
   return (

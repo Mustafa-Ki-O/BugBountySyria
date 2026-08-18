@@ -1,6 +1,7 @@
 import { Button, Container, Stack, TextInput } from "@mantine/core";
 import * as yup from "yup";
-import { useForm, yupResolver } from "@mantine/form";
+import { useForm } from "@mantine/form";
+import { yupResolver } from "mantine-form-yup-resolver";
 import { useState,useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "../../assets/css/checkCode.module.css";
@@ -17,7 +18,7 @@ const CheckCode = () => {
   const { t } = useTranslation();
   const [progress, setProgress] = useState(false);
   const navigate = useNavigate();
-  const {postOtp,isLoading} = usePostOtp();
+  const {postOtp,isPending} = usePostOtp();
   const [isSubmitted,setIsSubmitted] = useState(false);
 
   const form = useForm({
@@ -51,9 +52,9 @@ const CheckCode = () => {
 
   useEffect(()=>{
     if(isSubmitted){
-      setProgress(isLoading)
+      setProgress(isPending)
      }
-  },[isLoading])
+  },[isPending])
 
   return (
     <>

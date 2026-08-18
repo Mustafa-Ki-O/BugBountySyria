@@ -1,10 +1,10 @@
-import { useMutation } from "react-query";
+import { useMutation } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 import { deleteProduct } from "../../../api/copmany/deleteProduct";
 
 
 const useDeleteProduct = (fetchData,setData) => {
-    const { mutate : deletePro , isLoading } = useMutation({
+    const { mutate : deletePro , isPending } = useMutation({
         mutationFn:(formData) => deleteProduct(formData),
         onSuccess:() => {
             fetchData(setData);
@@ -16,6 +16,6 @@ const useDeleteProduct = (fetchData,setData) => {
             
         }
     })
-  return {deletePro,isLoading}
+  return {deletePro,isPending}
 }
 export default useDeleteProduct

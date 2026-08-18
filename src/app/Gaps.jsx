@@ -14,7 +14,7 @@ const Gaps = () => {
   const [activePage,setActivePage] = useState(1);
   const [data,setData] = useState({})
   const [reports,setReports] = useState([])
-  const {fetchAllReports,isLoading} = useFetchReports(activePage)
+  const {fetchAllReports,isPending} = useFetchReports(activePage)
   const [totalPages,setTotalPages] = useState();
   
   useEffect(() => {
@@ -31,8 +31,8 @@ const Gaps = () => {
   },[data,activePage])
 
   useEffect(() => {
-    setProgress(isLoading);
-  }, [isLoading]);
+    setProgress(isPending);
+  }, [isPending]);
   
   
   return (

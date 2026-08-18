@@ -1,9 +1,9 @@
-import { useMutation } from "react-query";
+import { useMutation } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 import { fetchDataCompanyProfile } from "../../../api/copmany/fetchDataCompanyProfile";
 
 const useFetchProfile = () => {
-  const { mutate: fetchProfile, isLoading: isLoadingFetch } = useMutation({
+  const { mutate: fetchProfile, isPending: isPendingFetch } = useMutation({
     mutationFn: (setCompany) => {
       fetchDataCompanyProfile().then((res) => setCompany(res.data.company));
     },
@@ -15,6 +15,6 @@ const useFetchProfile = () => {
       toast.error("لم يتم جلب البيانات");
     },
   });
-  return { fetchProfile,  isLoadingFetch };
+  return { fetchProfile,  isPendingFetch };
 };
 export default useFetchProfile;

@@ -1,9 +1,9 @@
-import { useMutation } from "react-query";
+import { useMutation } from "@tanstack/react-query";
 import { PostPassword } from "../../../api/researcher/postPassword";
 import toast from "react-hot-toast";
 
 const useChangepassword = () => {
-  const { mutate: change, isLoading } = useMutation({
+  const { mutate: change, isPending } = useMutation({
     mutationFn: (formData) => PostPassword(formData),
     onSuccess: () => {
       console.log("تم تحديث كلمة المرور بنجاح");
@@ -14,6 +14,6 @@ const useChangepassword = () => {
       toast.error("هناك خطأ في البيانات التي ادخلتها اعد المحاولة");
     },
   });
-  return { change, isLoading };
+  return { change, isPending };
 };
 export default useChangepassword;

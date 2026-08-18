@@ -1,6 +1,7 @@
 import { Button, Container, Stack, TextInput } from "@mantine/core";
 import * as yup from "yup";
-import { useForm, yupResolver } from "@mantine/form";
+import { useForm } from "@mantine/form";
+import { yupResolver } from "mantine-form-yup-resolver";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "../../assets/css/ReSetPassword.module.css";
@@ -18,7 +19,7 @@ const ReSetPassword = () => {
   const [progress, setProgress] = useState(false);
   
   const navigate = useNavigate();
-  const {postEmail,isLoading} = usePostemail();
+  const {postEmail,isPending} = usePostemail();
 
   const [isSubmitted,setIsSubmitted] = useState(false);
   const form = useForm({
@@ -48,9 +49,9 @@ const ReSetPassword = () => {
   };
   useEffect(()=>{
     if(isSubmitted){
-      setProgress(isLoading)
+      setProgress(isPending)
      }
-  },[isLoading])
+  },[isPending])
 
   return (
     <>

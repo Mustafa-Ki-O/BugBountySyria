@@ -7,7 +7,7 @@ const LogoutModal = ({ openLogout, setOpenLogout, setProgress }) => {
 
   const { t } = useTranslation();
   const [isSubmitted,setIsSubmitted] = useState(false);
-  const {logout,isLoading} = useLogout();
+  const {logout,isPending} = useLogout();
 
   const handleLogout = () => {
     logout();
@@ -15,9 +15,9 @@ const LogoutModal = ({ openLogout, setOpenLogout, setProgress }) => {
 }
   useEffect(() => {
    if(isSubmitted){
-    setProgress(isLoading)
+    setProgress(isPending)
    }
-  },[isLoading])
+  },[isPending])
 
   return (
     <>

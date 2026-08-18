@@ -1,9 +1,9 @@
-import { useMutation } from "react-query";
+import { useMutation } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 import { PostProfile } from "../../../api/researcher/postProfile";
 
 const useUpdateProfile = (setCompany) => {
-  const { mutate: update, isLoading } = useMutation({
+  const { mutate: update, isPending } = useMutation({
     mutationFn: (formData) => PostProfile(formData),
     onSuccess: (data) => {
       setCompany(data.data.researcher);
@@ -14,6 +14,6 @@ const useUpdateProfile = (setCompany) => {
       toast.error("اعد المحاولة ");
     },
   });
-  return { update, isLoading };
+  return { update, isPending };
 };
 export default useUpdateProfile;

@@ -1,4 +1,4 @@
-import { useMutation } from "react-query";
+import { useMutation } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 import { PostValidOtp } from "../../../../api/researcher/forget-password/postValidOtp";
 import { useNavigate } from "react-router-dom";
@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 const usePostOtp= () => {
     const navigate = useNavigate();
-    const {mutate:postOtp , isLoading} = useMutation({
+    const {mutate:postOtp , isPending} = useMutation({
         mutationFn:(formData) => PostValidOtp(formData),
         onSuccess:() => {
             console.log('تم ارسال الرمز بنجاح')  
@@ -18,6 +18,6 @@ const usePostOtp= () => {
             toast.error(err.message)
         }
     })
-  return {postOtp ,isLoading}
+  return {postOtp ,isPending}
 }
 export default usePostOtp

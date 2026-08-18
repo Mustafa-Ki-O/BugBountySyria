@@ -11,7 +11,7 @@ import { useState,useEffect } from "react";
 function AddProgramModal({ opened, close,setData, fetchData,setProgress }) {
   const { t } = useTranslation();
 
-  const {addPro,isLoading} = useAddProduct(fetchData,setData);
+  const {addPro,isPending} = useAddProduct(fetchData,setData);
   const [isSubmitted,setIsSubmitted] = useState(false)
 
   const schema = yup.object().shape({
@@ -57,9 +57,9 @@ function AddProgramModal({ opened, close,setData, fetchData,setProgress }) {
 
   useEffect(() => {
     if(isSubmitted){
-     setProgress(isLoading)
+     setProgress(isPending)
     }
-   },[isLoading])
+   },[isPending])
 
   return (
     <>

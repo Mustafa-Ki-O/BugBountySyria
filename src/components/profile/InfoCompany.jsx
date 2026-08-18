@@ -41,7 +41,7 @@ const InfoCompany = ({ setProgress }) => {
   const [openLogout, setOpenLogout] = useState(false);
   const navigate = useNavigate();
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const { fetchProfile, isLoadingFetch } = useFetchProfile();
+  const { fetchProfile, isPendingFetch } = useFetchProfile();
 
   const schema = yup.object().shape({
     name: yup.string().min(2, t("الاسم يجب ان يحوي حرفين على الاقل")),
@@ -60,10 +60,10 @@ const InfoCompany = ({ setProgress }) => {
 
   useEffect(() => {
     console.log("isload");
-    setProgress(isLoadingFetch);
-  }, [isLoadingFetch]);
+    setProgress(isPendingFetch);
+  }, [isPendingFetch]);
 
-  const { update, isLoading } = useUpdateProfile(setCompany);
+  const { update, isPending } = useUpdateProfile(setCompany);
 
   const form = useForm({
     mode: "uncontrolled",
@@ -125,9 +125,9 @@ const InfoCompany = ({ setProgress }) => {
 
   useEffect(() => {
     if (isSubmitted) {
-      setProgress(isLoading);
+      setProgress(isPending);
     }
-  }, [isLoading]);
+  }, [isPending]);
 
   return (
     <>

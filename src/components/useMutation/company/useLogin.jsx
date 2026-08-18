@@ -1,11 +1,11 @@
-import { useMutation } from "react-query";
+import { useMutation } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import { SignInCompany } from "../../../api/copmany/sighnInCompany";
 
 const useLogin = () => {
   const navigate = useNavigate();
-  const { mutate: login, isLoading } = useMutation({
+  const { mutate: login, isPending } = useMutation({
     mutationFn: (formData) => SignInCompany(formData),
     onSuccess: () => {
       toast.success("تم تسجيل الدخول بنجاح");
@@ -16,6 +16,6 @@ const useLogin = () => {
       toast.error("الايميل او كلمة السر خاطئة");
     },
   });
-  return { login, isLoading };
+  return { login, isPending };
 };
 export default useLogin;

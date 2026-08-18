@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 const List = ({companies}) => {
   
   const { t } = useTranslation();
+  console.log(companies)
     if (companies.length === 0) {
         return (
           <Container fluid w='100%' h='100vh' p={50} pt={5} >

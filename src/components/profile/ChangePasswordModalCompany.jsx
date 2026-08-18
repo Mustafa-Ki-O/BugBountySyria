@@ -15,7 +15,7 @@ import useChangepassword from "../useMutation/company/useChangePassword";
 import { useState, useEffect } from "react";
 
 const ChangePasswordModalCompany = ({ opened, close, setProgress }) => {
-  const { change, isLoading } = useChangepassword();
+  const { change, isPending } = useChangepassword();
   const { t } = useTranslation();
   const [isSubmitted, setIsSubmitted] = useState(false);
 
@@ -57,9 +57,9 @@ const ChangePasswordModalCompany = ({ opened, close, setProgress }) => {
   };
   useEffect(() => {
     if (isSubmitted) {
-      setProgress(isLoading);
+      setProgress(isPending);
     }
-  }, [isLoading]);
+  }, [isPending]);
 
   return (
     <>

@@ -3,7 +3,6 @@ import person from "../../../assets/vectors/Vector1.png";
 import message from "../../../assets/vectors/Vector2.png";
 import phone from "../../../assets/vectors/Vector3.png";
 import "../../../assets/css/researcher.css";
-import { useNavigate } from "react-router-dom";
 import { yupResolver } from "mantine-form-yup-resolver";
 import * as yup from "yup";
 import { useForm } from "@mantine/form";
@@ -15,7 +14,7 @@ import LoginButton from "../../../app/auth/LoginButton";
 const ResearcherForm = ({setProgress}) => {
   const { t } = useTranslation();
 
-  const {register,isLoading} = useReg()
+  const {register,isPending} = useReg()
   const[isSubmitted,setIsSubmitted] = useState(false)
   const schema = yup.object().shape({
     name: yup.string().test(
@@ -70,9 +69,9 @@ const ResearcherForm = ({setProgress}) => {
   };
   useEffect(()=>{
     if(isSubmitted){
-    setProgress(isLoading)
+    setProgress(isPending)
     }
-  },[isLoading])
+  },[isPending])
 
   return (
     <form

@@ -13,7 +13,7 @@ const Researcher = () => {
   const [selectedRes, setSelectedRes] = useState({});
   const [resReports, setResReports] = useState([]);
 
-  const { fetchResearcher, isLoading } = useFetchResearcher(
+  const { fetchResearcher, isPending } = useFetchResearcher(
     setSelectedRes,
     setResReports
   );
@@ -23,8 +23,8 @@ const Researcher = () => {
   }, []);
 
   useEffect(() => {
-    setProgress(isLoading);
-  }, [isLoading]);
+    setProgress(isPending);
+  }, [isPending]);
 
   
   return (

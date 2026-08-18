@@ -1,11 +1,11 @@
-import { useMutation } from "react-query";
+import { useMutation } from "@tanstack/react-query";
 import addProduct from "../../../api/copmany/addProdoct";
 import toast from "react-hot-toast";
 // import fetchProgramCompany from "../../../api/copmany/fetchProgramCompany";
 // import FetchData from "../../AddProgram/FetchData";
 
 const useAddProduct = (fetchData,setData) => {
-    const {mutate:addPro , isLoading} = useMutation({
+    const {mutate:addPro , isPending} = useMutation({
         mutationFn:(product) => addProduct(product),
         onSuccess:() => {  
             fetchData(setData);
@@ -16,6 +16,6 @@ const useAddProduct = (fetchData,setData) => {
             toast.error("حدث خطأ ما ,أعد المحاولة")
         }
     })
-  return {addPro,isLoading}
+  return {addPro,isPending}
 }
 export default useAddProduct

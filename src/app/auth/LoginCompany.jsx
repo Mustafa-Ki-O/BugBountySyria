@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { TextInput, Button, PasswordInput, rem,Container,Flex,Grid,GridCol} from "@mantine/core";
-import { useForm, yupResolver } from "@mantine/form";
+import { useForm } from "@mantine/form";
+import { yupResolver } from "mantine-form-yup-resolver";
 import { IconAt } from "@tabler/icons-react";
 import { useState,useEffect } from "react";
 import * as yup from "yup";
@@ -16,7 +17,7 @@ const schema = yup.object().shape({
 
 const LoginCompany = ({setProgress}) => {
   const { t } = useTranslation();
-  const {login,isLoading} = useLogin();
+  const {login,isPending} = useLogin();
   const [isSubmitted,setIsSubmitted] = useState(false);
   const navigate = useNavigate();
   const icon = <IconAt style={{ width: rem(16), height: rem(16) }} />;
@@ -47,9 +48,9 @@ const LoginCompany = ({setProgress}) => {
   
   useEffect(() => {
     if(isSubmitted){
-     setProgress(isLoading)
+     setProgress(isPending)
     }
-   },[isLoading])
+   },[isPending])
 
 
   return (

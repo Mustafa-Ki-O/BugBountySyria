@@ -17,10 +17,10 @@ const Home = () => {
   const [progress, setProgress] = useState(false);
   const [activePage,setActivePage] = useState(1);
   const [totalPages,setTotalPages] = useState();
-  const { fetch, isLoadingCom } = useFetchHome(activePage);
+  const { fetch, isPendingCom } = useFetchHome(activePage);
   const [data, setData] = useState([]);
   const [companies, setCompanies] = useState([]);
-  const { fetchResearcher, isLoading } = useFetchHomeResearcher();
+  const { fetchResearcher, isPending } = useFetchHomeResearcher();
   const [researchers, setResearchers] = useState([]);
  
  
@@ -41,8 +41,8 @@ const Home = () => {
   }, [data,activePage]);
 
   useEffect(() => {
-    setProgress(isLoadingCom || isLoading);
-  }, [isLoadingCom || isLoading]);
+    setProgress(isPendingCom || isPending);
+  }, [isPendingCom || isPending]);
 
   
   const [filteredResearchers, setFilterdResearchers] = useState([]);

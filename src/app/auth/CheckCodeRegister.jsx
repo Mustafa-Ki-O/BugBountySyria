@@ -1,6 +1,7 @@
 import { Button, Container, Stack, TextInput } from "@mantine/core";
 import * as yup from "yup";
-import { useForm, yupResolver } from "@mantine/form";
+import { useForm } from "@mantine/form";
+import { yupResolver } from "mantine-form-yup-resolver";
 import { useState,useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "../../assets/css/checkCodeRegister.module.css";
@@ -16,9 +17,9 @@ const schema = yup.object().shape({
 const CheckCodeRegister = () => {
   const { t } = useTranslation();
   const researcher = JSON.parse(localStorage.getItem("researcherData"));
-  const token = researcher.data.researcher.uuid;
+  const token = researcher?.data?.researcher?.uuid;
   const [isSubmitted,setIsSubmitted] = useState(false);
-  const {check,isLoading} = useCheckCode(token)
+  const {check,isPending} = useCheckCode(token)
   const [progress, setProgress] = useState(false);
   const navigate = useNavigate();
 
@@ -45,9 +46,9 @@ const CheckCodeRegister = () => {
 }
   useEffect(() => {
     if(isSubmitted){
-     setProgress(isLoading)
+     setProgress(isPending)
     }
-   },[isLoading])
+   },[isPending])
    
   return (
     <>

@@ -1,9 +1,9 @@
-import { useMutation } from "react-query";
+import { useMutation } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 import { FetchProfile } from "../../../api/researcher/fetchProfile";
 
 const useFetchProfile = () => {
-  const { mutate: fetchProfile, isLoading: isLoadingFetch } = useMutation({
+  const { mutate: fetchProfile, isPending: isPendingFetch } = useMutation({
     mutationFn: (setResearcher) => {
       FetchProfile().then((res) => setResearcher(res.data.researcher));
     },
@@ -15,6 +15,6 @@ const useFetchProfile = () => {
       toast.error("لم يتم جلب البيانات");
     },
   });
-  return { fetchProfile,  isLoadingFetch };
+  return { fetchProfile,  isPendingFetch };
 };
 export default useFetchProfile;

@@ -1,7 +1,8 @@
 import { Button, Container,PasswordInput,Grid,GridCol,Box,Flex,Text } from "@mantine/core";
 import * as yup from "yup";
 import '../../assets/css/passwordModal.css'
-import { useForm, yupResolver } from "@mantine/form";
+import { useForm} from "@mantine/form";
+import { yupResolver } from "mantine-form-yup-resolver";
 import { useState,useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Progress from "../general/Progress";
@@ -17,7 +18,7 @@ const ChangePasswordForm = () => {
   const { t } = useTranslation();
   const [progress, setProgress] = useState(false);
   const navigate = useNavigate();
-  const {postPassword,isLoading} = usePostPassword();
+  const {postPassword,isPending} = usePostPassword();
   const [isSubmitted,setIsSubmitted] = useState(false);
 
   const form = useForm({
@@ -54,9 +55,9 @@ const ChangePasswordForm = () => {
 
   useEffect(()=>{
     if(isSubmitted){
-      setProgress(isLoading)
+      setProgress(isPending)
      }
-  },[isLoading])
+  },[isPending])
 
   return (
     <>

@@ -16,7 +16,7 @@ const GapsTableCompany = ({ setProgress }) => {
   const [dataCompany, setDataCompany] = useState([]);
   const[reports,setReports] = useState([])
   const [activePage,setActivePage] = useState(1)
-  const { fetchAllReports, isLoading } = useFetchReports(activePage);
+  const { fetchAllReports, isPending } = useFetchReports(activePage);
   const[totalPages,setTotalPages] = useState()
   const [productId, setProductId] = useState();
   const [reportRate,setReportRate] = useState()
@@ -34,8 +34,8 @@ const GapsTableCompany = ({ setProgress }) => {
   },[dataCompany,activePage])
 
   useEffect(() => {
-    setProgress(isLoading);
-  }, [isLoading]);
+    setProgress(isPending);
+  }, [isPending]);
 
   const rows = reports && reports.map((pro) => (
     <Table.Tr

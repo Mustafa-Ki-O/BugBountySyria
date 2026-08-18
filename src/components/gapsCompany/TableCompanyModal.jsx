@@ -5,7 +5,7 @@ import useRateReport from "../useMutation/company/useRateReport";
 
 function TableCompanyModal({ uuid, reportRate, opened, close ,setProgress}) {
   const { t } = useTranslation();
-  const {rateReport,isLoading} = useRateReport(uuid);
+  const {rateReport,isPending} = useRateReport(uuid);
   const [rate,setRate] = useState(reportRate)
 
   const formRate = new FormData();
@@ -18,8 +18,8 @@ function TableCompanyModal({ uuid, reportRate, opened, close ,setProgress}) {
   close()
  }
  useEffect(()=>{
-  setProgress(isLoading)
- },[isLoading])
+  setProgress(isPending)
+ },[isPending])
 
 
   return (

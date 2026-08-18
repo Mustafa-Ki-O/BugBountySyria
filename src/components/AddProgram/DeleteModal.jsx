@@ -5,7 +5,7 @@ import { useEffect } from "react";
 
 const DeleteProductModal = ({productId,opened,setShow,fetchData,setData,setProgress}) => {
     const { t } = useTranslation();
-    const{deletePro,isLoading} = useDeleteProduct(fetchData,setData);
+    const{deletePro,isPending} = useDeleteProduct(fetchData,setData);
     
     const handleDelete =() => {
         const formData = new FormData();
@@ -15,8 +15,8 @@ const DeleteProductModal = ({productId,opened,setShow,fetchData,setData,setProgr
     }
 
     useEffect(()=>{
-        setProgress(isLoading)
-    },[isLoading])
+        setProgress(isPending)
+    },[isPending])
 
     return(
         <>

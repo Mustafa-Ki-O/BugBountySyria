@@ -12,7 +12,7 @@ const AddProgram = () => {
   const [progress, setProgress] = useState(false);
   const [activePage,setActivePage] = useState(1);
   const [totalPages,setTotalPages] = useState();
-  const { fetchProgram, isLoading } = useFetchProgramCompany(activePage);
+  const { fetchProgram, isPending } = useFetchProgramCompany(activePage);
   const [products,setProducts] = useState([]);
 
   useEffect(() => {
@@ -27,8 +27,8 @@ const AddProgram = () => {
   },[data,activePage])
 
   useEffect(() => {
-    setProgress(isLoading);
-  }, [isLoading]);
+    setProgress(isPending);
+  }, [isPending]);
 
 
     return(

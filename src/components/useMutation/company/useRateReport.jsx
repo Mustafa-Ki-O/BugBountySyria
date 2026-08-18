@@ -1,10 +1,10 @@
-import { useMutation } from "react-query";
+import { useMutation } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 import PostRateReport from "../../../api/copmany/postRateReport";
 
 
 const useRateReport = (uuid) => {
-    const { mutate : rateReport , isLoading } = useMutation({
+    const { mutate : rateReport , isPending } = useMutation({
         mutationFn:(formData) => PostRateReport(uuid,formData),
         onSuccess:() => {
             toast.success('تم رفع التقييم بنجاح')
@@ -15,6 +15,6 @@ const useRateReport = (uuid) => {
             
         }
     })
-  return {rateReport,isLoading}
+  return {rateReport,isPending}
 }
 export default useRateReport

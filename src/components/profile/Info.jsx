@@ -34,8 +34,8 @@ const Info = ({ setProgress }) => {
   const [opened, { open, close }] = useDisclosure(false);
   const [openLogout, setOpenLogout] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
-  const { fetchProfile, isLoadingFetch } = useFetchProfile();
-  const { update, isLoading } = useUpdateProfile(setResearcher);
+  const { fetchProfile, isPendingFetch } = useFetchProfile();
+  const { update, isPending } = useUpdateProfile(setResearcher);
 
   const [isSubmitted, setIsSubmitted] = useState(false);
 
@@ -44,7 +44,7 @@ const Info = ({ setProgress }) => {
   }, []);
 
   useEffect(() => {
-    setProgress(isLoadingFetch);
+    setProgress(isPendingFetch);
   }, []);
 
   const schema = yup.object().shape({
@@ -112,9 +112,9 @@ const Info = ({ setProgress }) => {
 
   useEffect(() => {
     if (isSubmitted) {
-      setProgress(isLoading);
+      setProgress(isPending);
     }
-  }, [isLoading]);
+  }, [isPending]);
 
   return (
     <>

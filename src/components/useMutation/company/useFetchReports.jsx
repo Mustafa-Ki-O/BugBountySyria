@@ -1,9 +1,9 @@
-import { useMutation } from "react-query";
+import { useMutation } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 import { fetchReports } from "../../../api/copmany/fetchReports";
 
 const useFetchReports = (activePage) => {
-  const { mutate: fetchAllReports, isLoading } = useMutation({
+  const { mutate: fetchAllReports, isPending } = useMutation({
     mutationFn: (setDataCompany) =>
       fetchReports(activePage).then((res) => setDataCompany(res.data)),
     onSuccess: () => {
@@ -14,6 +14,6 @@ const useFetchReports = (activePage) => {
       toast.error("حدث خطأ ما ,أعد المحاولة");
     },
   });
-  return { fetchAllReports, isLoading };
+  return { fetchAllReports, isPending };
 };
 export default useFetchReports;

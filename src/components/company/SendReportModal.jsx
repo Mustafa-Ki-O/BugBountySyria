@@ -18,7 +18,7 @@ import usePostBug from "../useMutation/researcher/usePostBug";
 
 function SendReportModal({ opened, close, uuid ,setProgress}) {
   const { t } = useTranslation();
-  const { postBug , isLoadingPost } = usePostBug();
+  const { postBug , isPendingPost } = usePostBug();
   const schema = yup.object().shape({
     title:yup.string().min(2,'يجب ان يحوي العنوان على حرفين على الاقل'),
     report_file: yup.mixed().test('fileType', 'Invalid file type', (value) => {
@@ -64,8 +64,8 @@ function SendReportModal({ opened, close, uuid ,setProgress}) {
     form.reset();
   }
   useEffect(()=>{
-    setProgress(isLoadingPost)
-  },[isLoadingPost])
+    setProgress(isPendingPost)
+  },[isPendingPost])
 
   return (
     <>

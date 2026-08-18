@@ -9,7 +9,8 @@ import {
   Grid,
   GridCol,
 } from "@mantine/core";
-import { useForm, yupResolver } from "@mantine/form";
+import { useForm} from "@mantine/form";
+import { yupResolver } from "mantine-form-yup-resolver";
 import { IconAt } from "@tabler/icons-react";
 import { useState, useEffect } from "react";
 import * as yup from "yup";
@@ -25,7 +26,7 @@ const schema = yup.object().shape({
 
 const Login = ({ setProgress }) => {
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const { login, isLoading } = useLogin();
+  const { login, isPending } = useLogin();
   const { t } = useTranslation();
   const navigate = useNavigate();
   const icon = <IconAt style={{ width: rem(16), height: rem(16) }} />;
@@ -55,9 +56,9 @@ const Login = ({ setProgress }) => {
   };
   useEffect(() => {
     if (isSubmitted) {
-      setProgress(isLoading);
+      setProgress(isPending);
     }
-  }, [isLoading]);
+  }, [isPending]);
 
   return (
     <>

@@ -1,9 +1,9 @@
-import { useMutation } from "react-query";
+import { useMutation } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 import fetchProgramCompany from "../../../api/copmany/fetchProgramCompany";
 
 const useFetchProgramCompany = (activePage) => {
-  const { mutate: fetchProgram, isLoading } = useMutation({
+  const { mutate: fetchProgram, isPending } = useMutation({
     mutationFn: (setData) =>
       fetchProgramCompany(activePage).then((res) => setData(res.data)),
     onSuccess: () => {
@@ -14,6 +14,6 @@ const useFetchProgramCompany = (activePage) => {
       toast.error("حدث خطأ ما ,أعد المحاولة");
     },
   });
-  return { fetchProgram, isLoading };
+  return { fetchProgram, isPending };
 };
 export default useFetchProgramCompany;
