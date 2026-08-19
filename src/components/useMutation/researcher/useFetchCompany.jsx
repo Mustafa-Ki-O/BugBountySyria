@@ -5,10 +5,10 @@ import { FetchCompanyProfile } from "../../../api/researcher/fetchCompanyProfile
 const useFetchCompany = (setSelectedCompany, setCompanyPrograms) => {
   const { mutate: fetchCompany, isPending } = useMutation({
     mutationFn: (id) => {
-        FetchCompanyProfile(id).then((res)=>{
-            setSelectedCompany(res.data['company-data'])
-            setCompanyPrograms(res.data['company-data'].products)
-        })
+        // FetchCompanyProfile(id).then((res)=>{
+        //     setSelectedCompany(res.data['company-data'])
+        //     setCompanyPrograms(res.data['company-data'].products)
+        // })
       FetchCompanyProfile(id).then((res) => {
         setSelectedCompany(res.data["company-data"]);
         setCompanyPrograms(res.data["company-data"].products);

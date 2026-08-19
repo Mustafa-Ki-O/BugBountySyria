@@ -64,7 +64,7 @@ const DrawerNav = ({ opened, close }) => {
             </>
           ) : (
             <>
-              <Grid mt={30} gutter={20} justify="center" align="center">
+              <Grid mt={30} gutter={20} justify="start" align="center">
                 <GridCol  span={6} >
                   <Image
                     radius="50%"
@@ -79,7 +79,7 @@ const DrawerNav = ({ opened, close }) => {
                     }}
                   />
                 </GridCol>
-                <GridCol span={6} p={0}>
+                <GridCol span={12} p={0} mb={10}>
                   <h2 style={{ color: "#b21222" }}>
                     {company
                       ? company.data.company.name

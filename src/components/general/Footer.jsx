@@ -13,7 +13,7 @@ const Footer = () => {
         <AppShell.Footer bd='none' style={{ position: 'absolute' ,bottom:0,backgroundColor:'transparent',alignItems:'center',padding:'20px 40px',marginTop:20 }}>
           <Flex visibleFrom="sm" justify='space-between'>
             <Group>
-            <Image src={privacyIcon} w={20}/>
+            <Image src={privacyIcon} style={{width:'20px',height:'20px'}} />
              <Text size="md" c='#1D1D1B90' fw={500}>
                  Bug Bounty Syria
              </Text>
@@ -39,7 +39,7 @@ const Footer = () => {
           <Container  p={0} justify='space-between' align="center" > 
             <Stack>
             <Flex gap={10} align='center' justify='start'>
-            <Image src={privacyIcon} p={2}/>
+            <Image src={privacyIcon} p={2} style={{width:'20px',height:'20px'}} />
              <Text size="md" fw={500}>
                  Bug Bounty Syria
              </Text>

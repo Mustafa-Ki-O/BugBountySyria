@@ -205,7 +205,7 @@ http.get(`${API_URL}/researcher/profile`, async () => {
         researcher:{
           name: "أحمد محمد",
           email: "ahmed@example.com",
-          phone: "+963911111111",
+          phone: "09111111",
           code: "23323422",
           image: "https://placehold.co/150x150/3182CE/FFFFFF?text=Researcher+Avatar",
           description: "باحث في مجال البرمجيات وتقنيات الويب الحديثة."
@@ -222,4 +222,91 @@ http.get(`${API_URL}/researcher/profile`, async () => {
     
   }, { status: 200 })
 }),
+
+
+
+http.get(`${API_URL}/researcher/company/:id`, async () => {
+  await delay(500);
+
+  return HttpResponse.json({
+    status: "success",
+    data: {
+      "company-data": {
+        uuid: "comp-uuid-123",
+        name: "تقنيات المستقبل للبرمجيات",
+        logo: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1000&auto=format&fit=crop",
+        description: "شركة رائدة في مجال الأمن السيبراني وتطوير حلول الويب المتقدمة.",
+        type: "خاصة",
+        domain: "cybersecurity.com",
+        employess_count: "50-100",
+        products: [
+          {
+            uuid: "prod-uuid-1",
+            title: "منصة فحص الثغرات",
+            url: "https://example.com/scanner",
+            description: "منصة مخصصة لاكتشاف الثغرات البرمجية في تطبيقات الويب تلقائياً."
+          },
+          {
+            uuid: "prod-uuid-2",
+            title: "بوابة الدفع الآمنة",
+            url: "https://example.com/secure-pay",
+            description: "نظام دفع إلكتروني مشفر ومحمي بأعلى معايير الأمان العالمية."
+          }
+        ]
+      }
+    }
+  }, { status: 200 });
+}),
+
+  http.post(`${API_URL}/researcher/add-reports-researcher`, async () => {
+    await delay(500)
+    return HttpResponse.json({
+    status: "success",
+    
+  }, { status: 200 })
+}),
+
+http.get(`${API_URL}/researcher/reports-researcher`, async ({ request }) => {
+    await delay(500);
+
+    const url = new URL(request.url);
+    const page = url.searchParams.get("page") || "1";
+
+    return HttpResponse.json({
+      status: "success",
+      
+      data:{
+        total_pages: 3,
+       current_page: Number(page),
+       researchers: [
+        {
+          title: "SQL Injection Vulnerability",
+          company_name: "Advanced Tech Company",
+          created_at: "2026-06-01",
+          file: "https://example.com/report1.pdf",
+          status: "accept",
+          rate: 8
+        },
+        {
+          title: "IDOR Privilege Escalation",
+          company_name: "Cybersecurity Platform",
+          created_at: "2026-06-03",
+          file: "https://example.com/report2.pdf",
+          status: "reject",
+          rate: 3
+        },
+        {
+          title: "Cross-Site Scripting (XSS)",
+          company_name: "Web Solutions Inc.",
+          created_at: "2026-06-05",
+          file: "https://example.com/report3.pdf",
+          status: "pending",
+          rate: 5
+        }
+      ]
+      }
+      
+    }, { status: 200 });
+  }),
+
 ]
