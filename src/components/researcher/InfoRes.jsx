@@ -31,7 +31,7 @@ const InfoRes = ({ id, name, description, email, phone, image, points }) => {
           {description}
         </Text>
         <Flex gap={10} justify="flex-end" align="center">
-          <Text>{points} /5</Text>
+          <Text>{points } /5</Text>
           <Image src={star} w={40} p={4} />
         </Flex>
         <Flex gap={30} justify="flex-end">

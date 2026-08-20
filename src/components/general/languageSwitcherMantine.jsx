@@ -2,8 +2,8 @@ import { useState } from "react";
 import { UnstyledButton, Menu, Image, Group, Tooltip } from "@mantine/core";
 import { IconChevronDown } from "@tabler/icons-react";
 import classes from "../../assets/css/LanguagePicker.module.css";
-import syria from "../../assets/vectors/syria_round_icon_64.png";
-import england from "../../assets/vectors/united_kingdom_round_icon_64.png";
+// import syria from "../../assets/vectors/syria_round_icon_64.png";
+// import england from "../../assets/vectors/united_kingdom_round_icon_64.png";
 import { useTranslation } from "react-i18next";
 import { useEffect } from "react";
 export function LanguagePicker() {
@@ -21,8 +21,8 @@ export function LanguagePicker() {
   };
 
   const data = [
-    { label: t("English"), image: england, value: "en" },
-    { label: t("Arabic"), image: syria, value: "ar" },
+    { label: t("English"), value: "en" },
+    { label: t("Arabic"),  value: "ar" },
   ];
 
   const [opened, setOpened] = useState(false);
@@ -36,7 +36,7 @@ export function LanguagePicker() {
       className={classes.menuItem}
     >
       <Tooltip label={item.label} color="#b21222" position="right" offset={15}>
-        <Image src={item.image} width={18} height={18} />
+        <p style={{padding:1,margin:'auto'}}>{item.value.toUpperCase()}</p>
       </Tooltip>
     </Menu.Item>
   ));
@@ -56,12 +56,13 @@ export function LanguagePicker() {
           className={classes.control}
           data-expanded={opened || undefined}
         >
-          <Group gap="xs">
-            <Image
+          <Group gap="xs" >
+            {/* <Image
               src={lang === "en" ? data[0].image : data[1].image}
               width={22}
               height={22}
-            />
+            /> */}
+            <p >{lang === "en" ? "EN" : "AR"}</p>
           </Group>
           <IconChevronDown size="1rem" className={classes.icon} stroke={1.5} />
         </UnstyledButton>

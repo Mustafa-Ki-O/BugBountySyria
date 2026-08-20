@@ -113,6 +113,7 @@ const InfoCompany = ({ setProgress }) => {
       }
       setIsSubmitted(true);
       update(formData);
+      fetchProfile(setCompany);
     }
 
     const validated = form.validate();

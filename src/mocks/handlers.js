@@ -4,6 +4,21 @@ import { delay, http, HttpResponse } from 'msw'
 
 const API_URL = import.meta.env.VITE_API_URL
 
+let mockProducts = [
+  {
+    uuid: "prod-1",
+    title: "Web Security Scanner",
+    url: "https://example.com/scanner",
+    description: "Automated vulnerability scanner for web applications."
+  },
+  {
+    uuid: "prod-2",
+    title: "API Gateway Protection",
+    url: "https://example.com/api-gateway",
+    description: "Security gateway to protect microservices and endpoints."
+  }
+];
+
 const mockCompanies = [
   {
     uuid: "110e8400-e29b-41d4-a716-446655440001",
@@ -306,6 +321,269 @@ http.get(`${API_URL}/researcher/reports-researcher`, async ({ request }) => {
       ]
       }
       
+    }, { status: 200 });
+  }),
+// company
+
+  http.post(`${API_URL}/company/login`, async () => {
+    await delay(500)
+    return HttpResponse.json({
+    status: "success",
+    data: {
+        token: "mock-jwt-token-company-123456789",
+        company: {
+          id: 12,
+          uuid:34655444,
+          name: "Company",
+          email: "company@example.com",
+          role: "company",
+          image: "https://placehold.co/150x150/3182CE/FFFFFF?text=Company+Avatar", 
+        }
+      },
+  }, { status: 200 })
+}),
+
+  http.post(`${API_URL}/company/register`, async () => {
+    await delay(500)
+    return HttpResponse.json({
+    status: "success",
+    data: {
+        token: "mock-jwt-token-company-123456789",
+        company:{
+        data:{
+         uuid:"34655444"
+         }
+      },
+    }
+  }, { status: 200 })
+}),
+
+
+http.get(`${API_URL}/company/home`, async ({ request }) => {
+  await delay(500);
+
+  const url = new URL(request.url);
+  const page = url.searchParams.get("page") || "1";
+
+  return HttpResponse.json({
+    status: "success",
+    data:{
+      total_pages: 3,
+    current_page: Number(page),
+   
+    researchers: [
+      {
+        uuid: "res-1",
+        name: "John Doe",
+        points: 1500,
+        description: "Senior Security Researcher and Bug Hunter.",
+        image: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=1000&auto=format&fit=crop"
+      },
+      {
+        uuid: "res-2",
+        name: "Jane Smith",
+        points: 1200,
+        description: "Penetration Tester & Web Security Expert.",
+        image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1000&auto=format&fit=crop"
+      }
+    ],
+   
+    count_accept: 15,
+    count_pending: 5,
+    count_accept_percent: 75.0,
+    count_pending_percent: 25.0
+    }
+    
+  }, { status: 200 });
+}),
+
+http.get(`${API_URL}/company/researcher/:id`, async ({ params }) => {
+    await delay(500);
+    const { id } = params;
+
+    return HttpResponse.json({
+      status: "success",
+      data: {
+        researcher: {
+          uuid: id,
+          name: "John Doe",
+          description: "Experienced security researcher specializing in web applications.",
+          email: "john.doe@example.com",
+          phone: "+1234567890",
+          image: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=1000&auto=format&fit=crop",
+          points: 3.5
+        },
+        accepted_reports: [
+          {
+            uuid: "rep-101",
+            title: "Remote Code Execution (RCE)",
+            created_at: "2026-06-10",
+            rate: 9
+          },
+          {
+            uuid: "rep-102",
+            title: "Cross-Site Scripting (XSS)",
+            created_at: "2026-06-12",
+            rate: 7
+          }
+        ]
+      }
+    }, { status: 200 });
+  }),
+
+  http.get(`${API_URL}/company/all_report`, async ({ request }) => {
+    await delay(500);
+
+    const url = new URL(request.url);
+    const page = url.searchParams.get("page") || "1";
+
+    return HttpResponse.json({
+      status: "success",
+      data:{
+        total_pages: 3,
+      current_page: Number(page),
+      reports: [
+        {
+          uuid: "rep-201",
+          title: "SQL Injection Vulnerability",
+          created_at: "2026-06-15",
+          file: "https://example.com/report1.pdf",
+          status: "accept",
+          rate: 8,
+          researcher: {
+            name: "John Doe"
+          }
+        },
+        {
+          uuid: "rep-202",
+          title: "IDOR Data Leak",
+          created_at: "2026-06-18",
+          file: "https://example.com/report2.pdf",
+          status: "pending",
+          rate: 5,
+          researcher: {
+            name: "Jane Smith"
+          }
+        },
+        {
+          uuid: "rep-203",
+          title: "Cross-Site Scripting (XSS)",
+          created_at: "2026-06-20",
+          file: "https://example.com/report3.pdf",
+          status: "reject",
+          rate: 2,
+          researcher: {
+            name: "Alex Johnson"
+          }
+        }
+      ]
+      }
+      
+    }, { status: 200 });
+  }),
+
+  http.post(`${API_URL}/company/all_report/rate/:uuid`, async ({ params, request }) => {
+    await delay(500);
+    const { uuid } = params;
+    
+    const formData = await request.formData();
+    const rate = formData.get("rate");
+
+    return HttpResponse.json({
+      status: "success",
+      message: "Rating submitted successfully",
+      data: {
+        uuid: uuid,
+        rate: Number(rate)
+      }
+    }, { status: 200 });
+  }),
+
+  http.get(`${API_URL}/company/profile`, async () => {
+    await delay(500);
+
+    return HttpResponse.json({
+      status: "success",
+      data: {
+        company:{
+        name: "Company Solutions",
+        email: "contact@company.com",
+        domain: "comapnyExample.com",
+        type: "خاصة",
+        employess_count: "50",
+        description: "A leading tech services and web development startup.",
+        logo: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1000&auto=format&fit=crop"
+ 
+        }
+      }
+    }, { status: 200 });
+  }),
+
+ 
+  http.post(`${API_URL}/company/profile`, async ({ request }) => {
+    await delay(500);
+
+    const formData = await request.formData();
+    const updatedData = {};
+    for (const [key, value] of formData.entries()) {
+      updatedData[key] = value;
+    }
+
+    return HttpResponse.json({
+      status: "success",
+      message: "Profile updated successfully",
+      data: updatedData
+    }, { status: 200 });
+  }),
+
+  http.get(`${API_URL}/company/all_product`, async ({ request }) => {
+    await delay(500);
+    const url = new URL(request.url);
+    const page = Number(url.searchParams.get("page") || "1");
+
+    return HttpResponse.json({
+      status: "success",
+      data:{
+        total_pages: 2,
+      current_page: page,
+      products: mockProducts
+      }
+      
+    }, { status: 200 });
+  }),
+
+  
+  http.post(`${API_URL}/company/add_product`, async ({ request }) => {
+    await delay(500);
+    const formData = await request.formData();
+    
+    const newProduct = {
+      uuid: "prod-" + Date.now(),
+      title: formData.get("title"),
+      url: formData.get("url"),
+      description: formData.get("description")
+    };
+
+    mockProducts.unshift(newProduct);
+
+    return HttpResponse.json({
+      status: "success",
+      message: "Product added successfully",
+      data: newProduct
+    }, { status: 201 });
+  }),
+
+ 
+  http.post(`${API_URL}/company/delete_product`, async ({ request }) => {
+    await delay(500);
+    const formData = await request.formData();
+    const uuid = formData.get("uuid");
+
+    mockProducts = mockProducts.filter((pro) => pro.uuid !== uuid);
+
+    return HttpResponse.json({
+      status: "success",
+      message: "Product deleted successfully"
     }, { status: 200 });
   }),
 
