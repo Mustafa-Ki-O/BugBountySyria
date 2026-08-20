@@ -131,6 +131,7 @@ const ChangePasswordModalCompany = ({ opened, close, setProgress }) => {
                 fullWidth
                 variant="filled"
                 color="#B21222"
+                disabled
                 onClick={isSubmitted ? close : null}
               >
                 {t("حفظ التغييرات")}

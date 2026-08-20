@@ -587,4 +587,12 @@ http.get(`${API_URL}/company/researcher/:id`, async ({ params }) => {
     }, { status: 200 });
   }),
 
+  http.post(`${API_URL}/company/company/logout`, async () => {
+    await delay(500);
+
+    return HttpResponse.json({
+      status: "success",
+      message: "Logged out successfully"
+    }, { status: 200 });
+  }),
 ]
