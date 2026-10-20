@@ -7,8 +7,8 @@ import {
   TextInput,
   FileInput
 } from "@mantine/core";
-import icon from "../../assets/vectors/vector8.png";
-import sendIcon from "../../assets/vectors/vector9.png";
+import icon from "../../assets/vectors/Vector8.png";
+import sendIcon from "../../assets/vectors/Vector9.png";
 import { useTranslation } from "react-i18next";
 import { useForm } from "@mantine/form";
 import { yupResolver } from "mantine-form-yup-resolver";
