@@ -1,15 +1,16 @@
 import { Container, Stack, TextInput,Text, Button,Image,Popover,Tooltip, Box, Grid, Group,Flex} from '@mantine/core';
 import filterIcon from '../../assets/vectors/Vector (11).png'
 import { IconSearch } from '@tabler/icons-react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import refreshIcon from '../../assets/vectors/refresh.png'
 import { useTranslation } from 'react-i18next';
 import { FetchHome } from '../../api/researcher/fetchHome';
 
-const Header = ({setCompanies}) => {
+const Header = ({setCompanies,allCompanies}) => {
 
 
-  const [searchTerm, setSearchTerm] = useState();
+  // const [originalCompanies,setOriginalCompanies] = useState(allCompanies)
+  const [searchTerm, setSearchTerm] = useState("");
   const [unavailability,setUnavailability] = useState();
   const [availability,setAvailability] = useState();
   const [oldPro,setOldPro] = useState();
@@ -20,6 +21,24 @@ const Header = ({setCompanies}) => {
   const handleSearch = (e) => {
     setSearchTerm(e.target.value);
   };
+
+useEffect(() => {
+    if (!allCompanies || allCompanies.length === 0) return;
+
+    // إذا حقل البحث فاضي، رجع القائمة الأصلية كاملة فوراً
+    if (!searchTerm || !searchTerm.trim()) {
+      setCompanies(allCompanies);
+      return;
+    }
+
+    // فلترة بناءً على النسخة الأصلية
+    const filtered = allCompanies.filter((company) =>
+      company.name.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    setCompanies(filtered);
+  }, [searchTerm, allCompanies]);
+
+  
   const handleSearchClick= () => {
     FetchHome({ searchTerm: searchTerm, unavailability: unavailability,availability:availability, oldPro: oldPro, newPro: newPro }).then((res) => setCompanies(res.data.companies))
   }

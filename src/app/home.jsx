@@ -2,7 +2,7 @@ import { Container, Stack } from "@mantine/core";
 import Header from "../components/home/Header.jsx";
 import List from "../components/home/List.jsx";
 import "../assets/css/home.module.css";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Diagrams from "../components/HomeCompany/Diagrams.jsx";
 import Researchers from "../components/HomeCompany/Researchers.jsx";
 import useFetchHome from "../components/useMutation/company/useFetchHome.jsx";
@@ -22,23 +22,26 @@ const Home = () => {
   const [companies, setCompanies] = useState([]);
   const { fetchResearcher, isPending } = useFetchHomeResearcher();
   const [researchers, setResearchers] = useState([]);
+ const [allCompanies, setAllCompanies] = useState([]);
  
- 
-
-  useEffect(() => {
+useEffect(() => {
     if (company) {
       fetch(setData);
     } else {
-      fetchResearcher(setCompanies);
+      
+      fetchResearcher((fetchedData) => {
+        setCompanies(fetchedData);
+        setAllCompanies(fetchedData); 
+      });
     }
-  }, [activePage]);
+  }, [activePage, company]);
 
   useEffect(() => {
     if (data) {
       setResearchers(data.researchers);
-      setTotalPages(data.total_pages)
+      setTotalPages(data.total_pages);
     }
-  }, [data,activePage]);
+  }, [data, activePage]);
 
   useEffect(() => {
     setProgress(isPendingCom || isPending);
@@ -63,7 +66,7 @@ const Home = () => {
         </Container>
       ) : (
         <Stack h="auto" p={20} style={{ rowGap: 40 }}>
-          <Header setCompanies={setCompanies} />
+          <Header setCompanies={setCompanies} allCompanies={allCompanies} />
           <List companies={companies} />
         </Stack>
       )}
