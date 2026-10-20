@@ -93,7 +93,7 @@ const CheckCode = () => {
                   className={styles.codeInput}
                 />
                 <div className={styles.contButtons}>
-                  <Button onClick={() => navigate('/BugBountySyria/login')}>
+                  <Button onClick={() => navigate('/login')}>
                     {t("رجوع")}
                   </Button>
                   <Button type="submit">{t("التحقق من الرمز")}</Button>

@@ -94,7 +94,7 @@ const LoginCompany = ({setProgress}) => {
                 color="#b21222"
                 mt="sm"
                 p={0}
-                onClick={() => navigate(`/BugBountySyria/`)}
+                onClick={() => navigate(`/`)}
               >
                 {t("انشاء حساب")}
               </Button>

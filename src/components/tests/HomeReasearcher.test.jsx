@@ -116,7 +116,7 @@ describe("Home Researcher",  () => {
         await user.click(buttons[0])
 
         await waitFor(()=>{
-          expect(mockedUseNavigate).toHaveBeenCalledWith(expect.stringContaining("/BugBountySyria/company/"))
+          expect(mockedUseNavigate).toHaveBeenCalledWith(expect.stringContaining("/company/"))
         })
         
     })

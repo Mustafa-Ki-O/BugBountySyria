@@ -6,9 +6,9 @@ import toast from "react-hot-toast";
 const useLogout = () => {
   const navigate = useNavigate();
   const { mutate: logout, isPending } = useMutation({
-    mutationFn: () => navigate("/BugBountySyria/login"),
+    mutationFn: () => navigate("/login"),
     onSuccess: () => {
-      // navigate("/BugBountySyria/login");
+      // navigate("/login");
       toast.success("تم تسجيل الخروج بنجاح");
       console.log("تم تسجيل الخروج بنجاح");
     },

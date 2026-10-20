@@ -33,7 +33,7 @@ const DrawerNav = ({ opened, close }) => {
         overlayProps={{ backgroundOpacity: 0.5, blur: 4 }}
       >
         <Grid>
-          {location.pathname === "/BugBountySyria/" || location.pathname === "/BugBountySyria/login" ? (
+          {location.pathname === "/" || location.pathname === "/login" ? (
             <>
               <GridCol>
                 <Button
@@ -42,7 +42,7 @@ const DrawerNav = ({ opened, close }) => {
                   color="#B21222"
                   size="md"
                   onClick={() => {
-                    navigate("/BugBountySyria/login");
+                    navigate("/login");
                   }}
                 >
                   {t("دخول")}
@@ -55,7 +55,7 @@ const DrawerNav = ({ opened, close }) => {
                   color="#B21222"
                   size="md"
                   onClick={() => {
-                    navigate("/BugBountySyria/");
+                    navigate("/");
                   }}
                 >
                   {t("سجل مجاناً")}
@@ -71,7 +71,7 @@ const DrawerNav = ({ opened, close }) => {
                     w={70}
                     h={70}
                     src={image}
-                    onClick={()=>navigate('/BugBountySyria/profile')}
+                    onClick={()=>navigate('/profile')}
                     style={{
                       cursor: "pointer",
                       border: "1px solid red",
@@ -105,7 +105,7 @@ const DrawerNav = ({ opened, close }) => {
                     color="#B21222"
                     fz={18}
                     fw={700}
-                    onClick={() => navigate("/BugBountySyria/gabs")}
+                    onClick={() => navigate("/gabs")}
                   >
                     {t("الثغرات المكتشفة")}
                   </Button>
@@ -117,7 +117,7 @@ const DrawerNav = ({ opened, close }) => {
                     color="#B21222"
                     fz={18}
                     fw={700}
-                    onClick={() => navigate("/BugBountySyria/home")}
+                    onClick={() => navigate("/home")}
                   >
                     {t("الصفحة الرئيسية")}
                   </Button>

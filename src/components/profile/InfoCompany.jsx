@@ -269,7 +269,7 @@ const InfoCompany = ({ setProgress }) => {
                   variant="outline"
                   color="#B21222"
                   
-                  onClick={() => navigate("/BugBountySyria/addProgram")}
+                  onClick={() => navigate("/addProgram")}
                 >
                   {t("إضافة / حذف برنامج")}
                 </Button>
@@ -300,7 +300,7 @@ const InfoCompany = ({ setProgress }) => {
                   size="sm"
                   variant="outline"
                   color="#B21222"
-                  onClick={() => navigate("/BugBountySyria/addProgram")}
+                  onClick={() => navigate("/addProgram")}
                 >
                   {t("إضافة / حذف برنامج")}
                 </Button>

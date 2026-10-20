@@ -40,16 +40,16 @@ const Navbar = () => {
 
   return (
     <>
-    {(location.pathname !== '/BugBountySyria/login' &&
-       location.pathname !== '/BugBountySyria/' && 
-       location.pathname !== '/BugBountySyria/resetpassword' &&
-       location.pathname !== '/BugBountySyria/checkcode' &&
-       location.pathname !== '/BugBountySyria/changePassword' &&
-       location.pathname !== '/BugBountySyria/checkcoderegister' &&
-       location.pathname !=='/BugBountySyria/not-found' &&
-       location.pathname !=='/BugBountySyria/server-error' &&
-       location.pathname !=='/BugBountySyria/unauthorized' && 
-       location.pathname !== '/BugBountySyria/network-error') ? (
+    {(location.pathname !== '/login' &&
+       location.pathname !== '/' && 
+       location.pathname !== '/resetpassword' &&
+       location.pathname !== '/checkcode' &&
+       location.pathname !== '/changePassword' &&
+       location.pathname !== '/checkcoderegister' &&
+       location.pathname !=='/not-found' &&
+       location.pathname !=='/server-error' &&
+       location.pathname !=='/unauthorized' && 
+       location.pathname !== '/network-error') ? (
       <>
       <DrawerNav opened={opened} close={close} />
       <AppShell navbar={{ width: "100%", breakpoint: "sm" }}>
@@ -69,7 +69,7 @@ const Navbar = () => {
         >
           <Flex justify="space-between" align="center">
             <Burger size="md" lineSize={2} hiddenFrom="md" onClick={open} />
-            <Link to="/BugBountySyria/home">
+            <Link to="/home">
               <Image src={vector} w={90} p={5} hiddenFrom="md" />
             </Link>
           </Flex>
@@ -85,8 +85,8 @@ const Navbar = () => {
               boxShadow: "0 3px 10px 0 #000",
             }}
           >
-            {location.pathname === "/BugBountySyria/" ||
-            location.pathname === "/BugBountySyria/login"  ? (
+            {location.pathname === "/" ||
+            location.pathname === "/login"  ? (
               <Group>
                 <Button
                 radius={8}
@@ -94,7 +94,7 @@ const Navbar = () => {
                   color="#B21222"
                   size="md"
                   onClick={() => {
-                    navigate("/BugBountySyria/login");
+                    navigate("/login");
                   }}
                 >
                   {t("دخول")}
@@ -105,7 +105,7 @@ const Navbar = () => {
                   color="#B21222"
                   size="md"
                   onClick={() => {
-                    navigate("/BugBountySyria/");
+                    navigate("/");
                   }}
                 >
                   {t("سجل مجاناً")}
@@ -126,7 +126,7 @@ const Navbar = () => {
                         value="profile"
                         fz={18}
                         fw={700}
-                        onClick={() => navigate("/BugBountySyria/profile")}
+                        onClick={() => navigate("/profile")}
                       >
                         <Image
                           src={image}
@@ -158,7 +158,7 @@ const Navbar = () => {
                         value="bugs"
                         fz={21}
                         fw={700}
-                        onClick={() => navigate("/BugBountySyria/gabs")}
+                        onClick={() => navigate("/gabs")}
                       >
                         {t("الثغرات المكتشفة")}
                       </Tabs.Tab>
@@ -167,7 +167,7 @@ const Navbar = () => {
                         value="securityInfo"
                         fz={21}
                         fw={700}
-                        onClick={() => navigate("/BugBountySyria/home")}
+                        onClick={() => navigate("/home")}
                       >
                         {t("الصفحة الرئيسية")}
                       </Tabs.Tab>
@@ -179,7 +179,7 @@ const Navbar = () => {
             <Flex align="center" gap={30}>
               {/* <LanguageSwitcher /> */}
               <LanguagePicker />
-              <Link to="/BugBountySyria/home">
+              <Link to="/home">
                 <Image src={vector} width={100} p={10} />
               </Link>
             </Flex>
@@ -190,10 +190,10 @@ const Navbar = () => {
     </>
     ):(
       <Box style={{position:'absolute',right:20,top:20}}>
-        {(location.pathname !== '/BugBountySyria/not-found' &&
-         location.pathname !== '/BugBountySyria/server-error' &&
-         location.pathname !=='/BugBountySyria/unauthorized' && 
-         location.pathname !== '/BugBountySyria/network-error') &&
+        {(location.pathname !== '/not-found' &&
+         location.pathname !== '/server-error' &&
+         location.pathname !=='/unauthorized' && 
+         location.pathname !== '/network-error') &&
           (
         <LanguagePicker />
       )}

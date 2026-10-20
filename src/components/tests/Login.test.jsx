@@ -201,7 +201,7 @@ beforeEach(() => {
 
   // التأكد من استدعاء التوجيه بالمسار المطلوب
   await waitFor(() => {
-    expect(mockedUseNavigate).toHaveBeenCalledWith("/BugBountySyria/home"); 
+    expect(mockedUseNavigate).toHaveBeenCalledWith("/home"); 
   });
 });
 
