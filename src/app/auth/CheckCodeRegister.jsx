@@ -4,7 +4,7 @@ import { useForm } from "@mantine/form";
 import { yupResolver } from "mantine-form-yup-resolver";
 import { useState,useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import styles from "../../assets/css/checkCodeRegister.module.css";
+import styles from "../../assets/css/CheckCodeRegister.module.css";
 import code from "../../assets/vectors/Vector5.png";
 import Progress from "../../components/general/Progress";
 import { useTranslation } from "react-i18next";
